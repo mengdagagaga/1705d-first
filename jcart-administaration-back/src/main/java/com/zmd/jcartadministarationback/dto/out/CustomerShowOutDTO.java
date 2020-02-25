@@ -1,7 +1,5 @@
 package com.zmd.jcartadministarationback.dto.out;
 
-import java.util.List;
-
 /**
  * @author ZMD
  * @version 1.0
@@ -14,15 +12,12 @@ public class CustomerShowOutDTO {
     private String realName;
     private String avatarUrl;
     private String mobile;
-    private Boolean mobileVerified;
     private String email;
-    private Boolean emailVerified;
     private Byte status;
     private Long createTimestamp;
     private Boolean newsSubscribed;
     private Integer rewordPoints;
     private Integer defaultAddressId;
-    private List<Integer> addressIds;
 
     public Integer getCustomerId() {
         return customerId;
@@ -64,14 +59,6 @@ public class CustomerShowOutDTO {
         this.mobile = mobile;
     }
 
-    public Boolean getMobileVerified() {
-        return mobileVerified;
-    }
-
-    public void setMobileVerified(Boolean mobileVerified) {
-        this.mobileVerified = mobileVerified;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -80,14 +67,13 @@ public class CustomerShowOutDTO {
         this.email = email;
     }
 
-    public Boolean getEmailVerified() {
-        return emailVerified;
+    public Byte getStatus() {
+        return status;
     }
 
-    public void setEmailVerified(Boolean emailVerified) {
-        this.emailVerified = emailVerified;
+    public void setStatus(Byte status) {
+        this.status = status;
     }
-
 
     public Long getCreateTimestamp() {
         return createTimestamp;
@@ -119,21 +105,5 @@ public class CustomerShowOutDTO {
 
     public void setDefaultAddressId(Integer defaultAddressId) {
         this.defaultAddressId = defaultAddressId;
-    }
-
-    public List<Integer> getAddressIds() {
-        return addressIds;
-    }
-
-    public void setAddressIds(List<Integer> addressIds) {
-        this.addressIds = addressIds;
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
     }
 }

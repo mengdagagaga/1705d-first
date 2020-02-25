@@ -1,12 +1,10 @@
 package com.zmd.jcartadministarationback.controller;
 
-import com.zmd.jcartadministarationback.dto.out.AddressShowOutDTO;
+import com.zmd.jcartadministarationback.dto.in.CustomerSearchInDTO;
 import com.zmd.jcartadministarationback.dto.out.CustomerListOutDTO;
 import com.zmd.jcartadministarationback.dto.out.CustomerShowOutDTO;
 import com.zmd.jcartadministarationback.dto.out.PageOutDTO;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @author ZMD
@@ -18,32 +16,20 @@ import java.util.List;
 public class CustomerController {
 
     @GetMapping("/search")
-    public PageOutDTO<CustomerListOutDTO> search(@RequestParam(required = false) String username,
-                                                 @RequestParam(required = false) String realName,
-                                                 @RequestParam(required = false) String mobile,
-                                                 @RequestParam(required = false) String email,
-                                                 @RequestParam(required = false) Byte status,
-                                                 @RequestParam(required = false) Long createTimestamp,
-                                                 @RequestParam(required = false, defaultValue = "1") Integer pageNum) {
+    public PageOutDTO<CustomerListOutDTO> search(CustomerSearchInDTO customerSearchInDTO,
+                                                 @RequestParam Integer pageNum) {
         return null;
     }
 
-    @GetMapping("/show")
+    @GetMapping("/getById")
     public CustomerShowOutDTO getById(@RequestParam Integer customerId) {
         return null;
     }
 
     @PostMapping("/disable")
-    public void disable(@RequestBody Integer customerId){
+    public void disable(@RequestParam Integer customerId){
 
     }
-
-
-    @PostMapping("/addressAll")
-    public List<AddressShowOutDTO> addressAll(@RequestBody Integer customerId){
-        return null;
-    }
-
 
 
 }
