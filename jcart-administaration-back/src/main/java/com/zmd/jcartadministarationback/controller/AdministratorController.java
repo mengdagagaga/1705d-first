@@ -1,9 +1,6 @@
 package com.zmd.jcartadministarationback.controller;
 
-import com.zmd.jcartadministarationback.dto.in.AdministratorCreateInDTO;
-import com.zmd.jcartadministarationback.dto.in.AdministratorLoginInDTO;
-import com.zmd.jcartadministarationback.dto.in.AdministratorUpdateInDTO;
-import com.zmd.jcartadministarationback.dto.in.AdministratorUpdateProfileInDTO;
+import com.zmd.jcartadministarationback.dto.in.*;
 import com.zmd.jcartadministarationback.dto.out.AdministratorGetProfileOutDTO;
 import com.zmd.jcartadministarationback.dto.out.AdministratorListOutDTO;
 import com.zmd.jcartadministarationback.dto.out.PageOutDTO;
@@ -48,6 +45,21 @@ public class AdministratorController {
     public Integer create(@RequestBody AdministratorCreateInDTO administratorCreateInDTO){
         return  null;
     }
+
+
+    @GetMapping("/getPwdResetCode")
+    public String getPwdResetCode(@RequestParam String email){
+        return null;
+    }
+
+
+    @PostMapping("/resetPwd")
+    public void resetPwd(@RequestBody AdministratorResetPwdInDTO administratorResetPwdInDTO){
+
+    }
+
+
+
 
 
 }

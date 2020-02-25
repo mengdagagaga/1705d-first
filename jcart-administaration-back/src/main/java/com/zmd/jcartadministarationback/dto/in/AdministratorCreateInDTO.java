@@ -9,7 +9,6 @@ public class AdministratorCreateInDTO {
 
     private String username;
     private String realName;
-    private String mobile;
     private String email;
     private String avatarUrl;
     private String password;
@@ -30,14 +29,6 @@ public class AdministratorCreateInDTO {
 
     public void setRealName(String realName) {
         this.realName = realName;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
     }
 
     public String getEmail() {
