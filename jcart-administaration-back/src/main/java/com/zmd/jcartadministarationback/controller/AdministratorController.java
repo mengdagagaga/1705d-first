@@ -6,6 +6,8 @@ import com.zmd.jcartadministarationback.dto.out.AdministratorListOutDTO;
 import com.zmd.jcartadministarationback.dto.out.PageOutDTO;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author ZMD
  * @version 1.0
@@ -58,6 +60,17 @@ public class AdministratorController {
 
     }
 
+
+    @PostMapping("/delete")
+    public void delete(@RequestBody Integer administratorId){
+
+    }
+
+
+    @PostMapping("/batchDelete")
+    public void batchDelete(@RequestBody List<Integer> administratorIds){
+
+    }
 
 
 
