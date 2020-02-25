@@ -1,6 +1,7 @@
 package com.zmd.jcartadministarationback.controller;
 
 import com.zmd.jcartadministarationback.dto.in.ProductCreateInDTO;
+import com.zmd.jcartadministarationback.dto.in.ProductSearchInDTO;
 import com.zmd.jcartadministarationback.dto.in.ProductUpdateInDTO;
 import com.zmd.jcartadministarationback.dto.out.PageOutDTO;
 import com.zmd.jcartadministarationback.dto.out.ProductListOutDTO;
@@ -18,12 +19,8 @@ public class ProductController {
 
 
     @GetMapping("/search")
-    public PageOutDTO<ProductListOutDTO> search(@RequestParam(required = false) String productCode,
-                                                @RequestParam(required = false) String productName,
-                                                @RequestParam(required = false) Double price,
-                                                @RequestParam(required = false) Integer quantity,
-                                                @RequestParam(required = false) Byte status,
-                                                @RequestParam(required = false, defaultValue = "1") Integer pageNum){
+    public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
+                                                @RequestParam Integer pageNum){
         return null;
     }
 
@@ -39,8 +36,8 @@ public class ProductController {
     }
 
 
-    @GetMapping("/show")
-    public ProductShowOutDTO show(Integer productId){
+    @GetMapping("/getById")
+    public ProductShowOutDTO getById(@RequestParam Integer productId){
         return null;
     }
 }

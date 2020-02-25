@@ -14,6 +14,7 @@ public class ProductCreateInDTO {
     private Double price;
     private Double discount;
     private Integer quantity;
+    private Integer stockQuantity;
     private Byte status;
     private String mainPicUrl;
     private Integer rewordPoints;
@@ -99,5 +100,13 @@ public class ProductCreateInDTO {
 
     public void setOtherPicUrls(List<String> otherPicUrls) {
         this.otherPicUrls = otherPicUrls;
+    }
+
+    public Integer getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 }

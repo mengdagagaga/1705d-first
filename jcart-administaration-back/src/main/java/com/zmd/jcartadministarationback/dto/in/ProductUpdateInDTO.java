@@ -11,11 +11,11 @@ public class ProductUpdateInDTO {
 
 
     private Integer productId;
-    private String productCode;
     private String productName;
     private Double price;
     private Double discount;
     private Integer quantity;
+    private Integer stockQuantity;
     private Byte status;
     private String mainPicUrl;
     private Integer rewordPoints;
@@ -29,14 +29,6 @@ public class ProductUpdateInDTO {
 
     public void setProductId(Integer productId) {
         this.productId = productId;
-    }
-
-    public String getProductCode() {
-        return productCode;
-    }
-
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
     }
 
     public String getProductName() {
@@ -109,5 +101,13 @@ public class ProductUpdateInDTO {
 
     public void setOtherPicUrls(List<String> otherPicUrls) {
         this.otherPicUrls = otherPicUrls;
+    }
+
+    public Integer getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 }
