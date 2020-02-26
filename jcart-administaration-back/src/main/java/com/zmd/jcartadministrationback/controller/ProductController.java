@@ -24,7 +24,7 @@ public class ProductController {
 
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
-                                                @RequestParam Integer pageNum){
+                                                @RequestParam(required = false, defaultValue = "1") Integer pageNum){
         return null;
     }
 
