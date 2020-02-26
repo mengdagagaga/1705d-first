@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("/com.zmd.jcartadministrationback.dao")
-public class JcartAdministarationBackApplication {
+public class JcartAdministrationBackApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JcartAdministarationBackApplication.class, args);
+        SpringApplication.run(JcartAdministrationBackApplication.class, args);
     }
 
 }
