@@ -1,5 +1,7 @@
 package com.zmd.jcartadministrationback.controller;
 
+import com.zmd.jcartadministrationback.dao.ProductDetailMapper;
+import com.zmd.jcartadministrationback.dao.ProductMapper;
 import com.zmd.jcartadministrationback.dto.in.ProductCreateInDTO;
 import com.zmd.jcartadministrationback.dto.in.ProductSearchInDTO;
 import com.zmd.jcartadministrationback.dto.in.ProductUpdateInDTO;
@@ -9,6 +11,8 @@ import com.zmd.jcartadministrationback.dto.out.ProductShowOutDTO;
 import com.zmd.jcartadministrationback.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author ZMD
@@ -21,6 +25,12 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ProductMapper productMapper;
+
+    @Autowired
+    private ProductDetailMapper productDetailMapper;
 
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
@@ -48,5 +58,18 @@ public class ProductController {
     @GetMapping("/getById")
     public ProductShowOutDTO getById(@RequestParam Integer productId){
         return null;
+    }
+
+
+
+    @PostMapping("/delete")
+    public void delete(@RequestBody Integer productId){
+        productService.delete(productId);
+    }
+
+    @PostMapping("/batchDelete")
+    public void batchDelete(@RequestBody List<Integer> productIds){
+        productMapper.batchDelete(productIds);
+        productDetailMapper.batchDelete(productIds);
     }
 }
