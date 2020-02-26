@@ -6,6 +6,8 @@ import com.zmd.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import com.zmd.jcartadministrationback.dto.out.PageOutDTO;
 import com.zmd.jcartadministrationback.dto.out.ProductListOutDTO;
 import com.zmd.jcartadministrationback.dto.out.ProductShowOutDTO;
+import com.zmd.jcartadministrationback.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/product")
 public class ProductController {
 
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
@@ -26,7 +30,10 @@ public class ProductController {
 
     @PostMapping("/create")
     public Integer create(@RequestBody ProductCreateInDTO productCreateInDTO){
-        return null;
+
+        Integer productId = productService.create(productCreateInDTO);
+
+        return productId;
     }
 
 

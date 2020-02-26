@@ -13,11 +13,11 @@ public class ProductCreateInDTO {
     private String productName;
     private Double price;
     private Double discount;
-    private Integer quantity;
     private Integer stockQuantity;
     private Byte status;
     private String mainPicUrl;
     private Integer rewordPoints;
+    private Integer sortOrder;
     private String description;
     private List<String> otherPicUrls;
 
@@ -54,12 +54,12 @@ public class ProductCreateInDTO {
         this.discount = discount;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getStockQuantity() {
+        return stockQuantity;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 
     public Byte getStatus() {
@@ -86,6 +86,14 @@ public class ProductCreateInDTO {
         this.rewordPoints = rewordPoints;
     }
 
+    public Integer getSortOrder() {
+        return sortOrder;
+    }
+
+    public void setSortOrder(Integer sortOrder) {
+        this.sortOrder = sortOrder;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -100,13 +108,5 @@ public class ProductCreateInDTO {
 
     public void setOtherPicUrls(List<String> otherPicUrls) {
         this.otherPicUrls = otherPicUrls;
-    }
-
-    public Integer getStockQuantity() {
-        return stockQuantity;
-    }
-
-    public void setStockQuantity(Integer stockQuantity) {
-        this.stockQuantity = stockQuantity;
     }
 }
