@@ -1,5 +1,7 @@
 package com.zmd.jcartadministrationback.dao;
 
+import com.github.pagehelper.Page;
+import com.zmd.jcartadministrationback.dto.out.ProductListOutDTO;
 import com.zmd.jcartadministrationback.po.ProductDetail;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -25,5 +27,7 @@ public interface ProductDetailMapper {
     //    custom
 
     int batchDelete(@Param("productIds") List<Integer> productIds);
+
+
 
 }

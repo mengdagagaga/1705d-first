@@ -1,5 +1,6 @@
 package com.zmd.jcartadministrationback.controller;
 
+import com.github.pagehelper.Page;
 import com.zmd.jcartadministrationback.dao.ProductDetailMapper;
 import com.zmd.jcartadministrationback.dao.ProductMapper;
 import com.zmd.jcartadministrationback.dto.in.ProductCreateInDTO;
@@ -35,7 +36,14 @@ public class ProductController {
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
                                                 @RequestParam(required = false, defaultValue = "1") Integer pageNum){
-        return null;
+        Page<ProductListOutDTO> page = productService.search(pageNum);
+
+        PageOutDTO<ProductListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setTotal(page.getTotal());
+        pageOutDTO.setPageSize(page.getPageSize());
+        pageOutDTO.setPageNum(page.getPageNum());
+        pageOutDTO.setList(page);
+        return pageOutDTO;
     }
 
     @PostMapping("/create")

@@ -1,7 +1,9 @@
 package com.zmd.jcartadministrationback.service;
 
+import com.github.pagehelper.Page;
 import com.zmd.jcartadministrationback.dto.in.ProductCreateInDTO;
 import com.zmd.jcartadministrationback.dto.in.ProductUpdateInDTO;
+import com.zmd.jcartadministrationback.dto.out.ProductListOutDTO;
 
 /**
  * @author ZMD
@@ -15,4 +17,6 @@ public interface ProductService {
     void update(ProductUpdateInDTO productUpdateInDTO);
 
     void delete(Integer productId);
+
+    Page<ProductListOutDTO> search(Integer pageNum);
 }

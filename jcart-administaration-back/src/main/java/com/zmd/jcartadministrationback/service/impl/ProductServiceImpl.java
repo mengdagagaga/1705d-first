@@ -1,10 +1,13 @@
 package com.zmd.jcartadministrationback.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.zmd.jcartadministrationback.dao.ProductDetailMapper;
 import com.zmd.jcartadministrationback.dao.ProductMapper;
 import com.zmd.jcartadministrationback.dto.in.ProductCreateInDTO;
 import com.zmd.jcartadministrationback.dto.in.ProductUpdateInDTO;
+import com.zmd.jcartadministrationback.dto.out.ProductListOutDTO;
 import com.zmd.jcartadministrationback.po.Product;
 import com.zmd.jcartadministrationback.po.ProductDetail;
 import com.zmd.jcartadministrationback.service.ProductService;
@@ -90,6 +93,13 @@ public class ProductServiceImpl implements ProductService {
     public void delete(Integer productId) {
         productMapper.deleteByPrimaryKey(productId);
         productDetailMapper.deleteByPrimaryKey(productId);
+    }
+
+    @Override
+    public Page<ProductListOutDTO> search(Integer pageNum) {
+        PageHelper.startPage(pageNum, 10);
+        Page<ProductListOutDTO> page = productMapper.search();
+        return page;
     }
 
 
