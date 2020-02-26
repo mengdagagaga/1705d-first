@@ -1,6 +1,7 @@
 package com.zmd.jcartadministrationback.service;
 
 import com.zmd.jcartadministrationback.dto.in.ProductCreateInDTO;
+import com.zmd.jcartadministrationback.dto.in.ProductUpdateInDTO;
 
 /**
  * @author ZMD
@@ -10,4 +11,7 @@ import com.zmd.jcartadministrationback.dto.in.ProductCreateInDTO;
 public interface ProductService {
 
     Integer create(ProductCreateInDTO productCreateInDTO);
+
+    void update(ProductUpdateInDTO productUpdateInDTO);
+
 }
