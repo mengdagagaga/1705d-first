@@ -28,7 +28,15 @@ var app = new Vue({
                 .catch(function (error) {
                     console.log(error);
                 });
-        }
+        },
+        handleProductUpdateClick(row){
+            console.log('to product update click', row);
+            location.href = 'product-update.html?productId=' + row.productId;
+        },
+        handleProductCreateClick(){
+            console.log('to product create click');
+            location.href = 'product-create.html';
+        },
     },
 
 

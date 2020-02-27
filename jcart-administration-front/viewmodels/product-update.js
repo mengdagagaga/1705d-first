@@ -1,6 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
+        productId: '',
         productCode: '',
         productName: '',
         price: '',
@@ -20,9 +21,47 @@ var app = new Vue({
             { value: 2, label: '待审核' }
         ],
         mainFileList: [],
-        otherFileList: [],
+        otherFileList: []
+    },
+    mounted() {
+        console.log('view mounted');
+
+        var url = new URL(location.href);
+        this.productId = url.searchParams.get("productId");
+        if (!this.productId) {
+            alert('productId is null(商品id不存在)');
+            return;
+        }
+
+        this.getProductById();
     },
     methods: {
+        getProductById() {
+            axios.get('/product/getById', {
+                params: {
+                    productId: this.productId
+                }
+            })
+                .then(function (response) {
+                    console.log(response);
+                    var product = response.data;
+                    app.productId = product.productId;
+                    app.productCode = product.productCode;
+                    app.productName = product.productName;
+                    app.price = product.price;
+                    app.discount = product.discount;
+                    app.stockQuantity = product.stockQuantity;
+                    app.selectedStatus = product.status;
+                    app.rewordPoints = product.rewordPoints;
+                    app.sortOrder = product.sortOrder;
+                    app.mainPicUrl = product.mainPicUrl;
+                    app.description = product.description;
+                    app.otherPicUrls = product.otherPicUrls;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
         handleCreateClick() {
             console.log('create click');
             this.createProduct();
@@ -87,9 +126,10 @@ var app = new Vue({
                     });
             });
         },
-        createProduct() {
-            axios.post('/product/create', {
-                productCode: this.productCode,
+
+        handleUpdateClick(){
+            axios.post('/product/update', {
+                productId: this.productId,
                 productName: this.productName,
                 price: this.price,
                 discount: this.discount,
@@ -103,12 +143,14 @@ var app = new Vue({
             })
                 .then(function (response) {
                     console.log(response);
-                    alert('创建成功');
+                    alert('修改成功');
                     location.href = 'product-search.html';
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
         }
-    }
+
+        
+    },
 })
