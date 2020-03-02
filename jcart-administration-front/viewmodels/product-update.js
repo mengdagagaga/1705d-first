@@ -41,6 +41,11 @@ var app = new Vue({
         this.getProductById();
     },
     methods: {
+        handleUpdateClick() {
+            console.log('update click');
+            this.description = tinyMCE.activeEditor.getContent();
+            this.updateClick();
+        },
         getProductById() {
             axios.get('/product/getById', {
                 params: {
@@ -136,7 +141,7 @@ var app = new Vue({
             });
         },
 
-        handleUpdateClick(){
+        updateClick(){
             axios.post('/product/update', {
                 productId: this.productId,
                 productName: this.productName,
