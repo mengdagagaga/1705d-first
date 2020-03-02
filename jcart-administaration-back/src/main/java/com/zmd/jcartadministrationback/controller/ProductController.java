@@ -9,6 +9,8 @@ import com.zmd.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import com.zmd.jcartadministrationback.dto.out.PageOutDTO;
 import com.zmd.jcartadministrationback.dto.out.ProductListOutDTO;
 import com.zmd.jcartadministrationback.dto.out.ProductShowOutDTO;
+import com.zmd.jcartadministrationback.po.Product;
+import com.zmd.jcartadministrationback.po.ProductDetail;
 import com.zmd.jcartadministrationback.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -66,6 +68,8 @@ public class ProductController {
 
     @GetMapping("/getById")
     public ProductShowOutDTO getById(@RequestParam Integer productId){
+        Product product = productMapper.selectByPrimaryKey(productId);
+        ProductDetail productDetail = productDetailMapper.selectByPrimaryKey(productId);
         ProductShowOutDTO productShowOutDTO = productService.getById(productId);
         return productShowOutDTO;
     }
