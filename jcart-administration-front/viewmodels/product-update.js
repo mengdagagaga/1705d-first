@@ -117,7 +117,10 @@ var app = new Vue({
                     .then(function (response) {
                         console.log(response);
                         var url = response.data;
-                        app.otherPicUrls.push(url);
+                        app.otherPicUrls.p
+                        
+                        
+                        cush(url);
                         alert('上传成功');
                     })
                     .catch(function (error) {
