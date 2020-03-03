@@ -1,6 +1,7 @@
 package com.zmd.jcartadministrationback.controller;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import com.github.pagehelper.Page;
 import com.zmd.jcartadministrationback.constant.ClientExceptionConstant;
 import com.zmd.jcartadministrationback.dto.in.*;
 import com.zmd.jcartadministrationback.dto.out.AdministratorGetProfileOutDTO;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author ZMD
@@ -64,11 +66,30 @@ public class AdministratorController {
     @PostMapping("/update")
     public void update(@RequestBody AdministratorUpdateInDTO administratorUpdateInDTO){
 
+
     }
 
     @GetMapping("/getList")
     public PageOutDTO<AdministratorListOutDTO> getList(@RequestParam(required = false,defaultValue = "1") Integer pageNum){
-        return null;
+        Page<Administrator> page = administratorService.getList(pageNum);
+        List<AdministratorListOutDTO> administratorListOutDTOS = page.stream().map(administrator -> {
+            AdministratorListOutDTO administratorListOutDTO = new AdministratorListOutDTO();
+            administratorListOutDTO.setAdministratorId(administrator.getAdministratorId());
+            administratorListOutDTO.setUsername(administrator.getUsername());
+            administratorListOutDTO.setRealName(administrator.getRealName());
+            administratorListOutDTO.setStatus(administrator.getStatus());
+            administratorListOutDTO.setCreateTimestamp(administrator.getCreateTime().getTime());
+            return administratorListOutDTO;
+        }).collect(Collectors.toList());
+
+        PageOutDTO<AdministratorListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setTotal(page.getTotal());
+        pageOutDTO.setPageSize(page.getPageSize());
+        pageOutDTO.setPageNum(page.getPageNum());
+        pageOutDTO.setList(administratorListOutDTOS);
+
+        return pageOutDTO;
+
     }
 
 
