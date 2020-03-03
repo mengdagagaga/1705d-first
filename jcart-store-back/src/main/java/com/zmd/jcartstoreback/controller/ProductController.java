@@ -3,10 +3,7 @@ package com.zmd.jcartstoreback.controller;
 import com.zmd.jcartstoreback.dto.out.PageOutDTO;
 import com.zmd.jcartstoreback.dto.out.ProductListOutDTO;
 import com.zmd.jcartstoreback.dto.out.ProductShowOutDTO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author ZMD
@@ -15,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/product")
+@CrossOrigin
 public class ProductController {
 
     @GetMapping("/search")
