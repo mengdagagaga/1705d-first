@@ -59,8 +59,14 @@ public class AddressController {
 
 
     @PostMapping("/update")
-    public void update(@RequestBody AddressUpdateInDTO addressUpdateInDTO,
-                          @RequestAttribute Integer customerId){
+    public void update(@RequestBody AddressUpdateInDTO addressUpdateInDTO){
+        Address address = new Address();
+        address.setAddressId(addressUpdateInDTO.getAddressId());
+        address.setTag(addressUpdateInDTO.getTag());
+        address.setReceiverName(addressUpdateInDTO.getReceiverName());
+        address.setReceiverMobile(addressUpdateInDTO.getReceiverMobile());
+        address.setContent(addressUpdateInDTO.getContent());
+        addressService.update(address);
 
     }
 

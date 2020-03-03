@@ -31,4 +31,9 @@ public class AddressServiceImpl implements AddressService {
         Integer addressId = address.getAddressId();
         return addressId;
     }
+
+    @Override
+    public void update(Address address) {
+        addressMapper.updateByPrimaryKeySelective(address);
+    }
 }

@@ -6,7 +6,7 @@ package com.zmd.jcartstoreback.dto.in;
  * @date 2020/2/25 16:32
  */
 public class AddressUpdateInDTO {
-
+    private Integer addressId;
     private String receiverName;
     private String receiverMobile;
     private String content;
@@ -42,5 +42,13 @@ public class AddressUpdateInDTO {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
     }
 }
