@@ -34,7 +34,7 @@ var app = new Vue({
         var url = new URL(location.href);
         this.productId = url.searchParams.get("productId");
         if (!this.productId) {
-            alert('productId is null(商品id不存在)');
+            alert('productId is null');
             return;
         }
 
@@ -44,38 +44,7 @@ var app = new Vue({
         handleUpdateClick() {
             console.log('update click');
             this.description = tinyMCE.activeEditor.getContent();
-            this.updateClick();
-        },
-        getProductById() {
-            axios.get('/product/getById', {
-                params: {
-                    productId: this.productId
-                }
-            })
-                .then(function (response) {
-                    console.log(response);
-                    var product = response.data;
-                    app.productId = product.productId;
-                    app.productCode = product.productCode;
-                    app.productName = product.productName;
-                    app.price = product.price;
-                    app.discount = product.discount;
-                    app.stockQuantity = product.stockQuantity;
-                    app.selectedStatus = product.status;
-                    app.rewordPoints = product.rewordPoints;
-                    app.sortOrder = product.sortOrder;
-                    app.mainPicUrl = product.mainPicUrl;
-                    app.productAbstract = product.productAbstract;
-                    app.description = product.description;
-                    app.otherPicUrls = product.otherPicUrls;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        },
-        handleCreateClick() {
-            console.log('create click');
-            this.createProduct();
+            this.updateProduct();
         },
         handleOnMainChange(val) {
             this.selectedMainPic = val.raw;
@@ -128,20 +97,17 @@ var app = new Vue({
                     .then(function (response) {
                         console.log(response);
                         var url = response.data;
-                        app.otherPicUrls.p
-                        
-                        
-                        cush(url);
-                        alert('上传成功');
+                        app.otherPicUrls.push(url);
                     })
                     .catch(function (error) {
                         console.log(error);
-                        alert('上传失败');
+                        alert('上床失败');
                     });
             });
-        },
 
-        updateClick(){
+
+        },
+        updateProduct() {
             axios.post('/product/update', {
                 productId: this.productId,
                 productName: this.productName,
@@ -159,13 +125,37 @@ var app = new Vue({
                 .then(function (response) {
                     console.log(response);
                     alert('修改成功');
-                    location.href = 'product-search.html';
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        getProductById() {
+            axios.get('/product/getById', {
+                params: {
+                    productId: this.productId
+                }
+            })
+                .then(function (response) {
+                    console.log(response);
+                    var product = response.data;
+                    app.productId = product.productId;
+                    app.productCode = product.productCode;
+                    app.productName = product.productName;
+                    app.price = product.price;
+                    app.discount = product.discount;
+                    app.stockQuantity = product.stockQuantity;
+                    app.selectedStatus = product.status;
+                    app.rewordPoints = product.rewordPoints;
+                    app.sortOrder = product.sortOrder;
+                    app.mainPicUrl = product.mainPicUrl;
+                    app.productAbstract = product.productAbstract;
+                    app.description = product.description;
+                    app.otherPicUrls = product.otherPicUrls;
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
         }
-
-        
-    },
+    }
 })
