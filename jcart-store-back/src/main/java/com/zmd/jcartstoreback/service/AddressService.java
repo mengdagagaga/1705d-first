@@ -13,4 +13,6 @@ public interface AddressService {
 
 
     List<Address> getByCustomerId(Integer customerId);
+
+    Integer create(Address address);
 }

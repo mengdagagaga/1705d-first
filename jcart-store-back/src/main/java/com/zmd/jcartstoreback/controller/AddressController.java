@@ -45,7 +45,16 @@ public class AddressController {
     @PostMapping("/create")
     public Integer create(@RequestBody AddressCreateInDTO addressCreateInDTO,
                           @RequestAttribute Integer customerId){
-        return null;
+        Address address = new Address();
+        address.setCustomerId(customerId);
+        address.setTag(addressCreateInDTO.getTag());
+        address.setReceiverName(addressCreateInDTO.getReceiverName());
+        address.setReceiverMobile(addressCreateInDTO.getReceiverMobile());
+        address.setContent(addressCreateInDTO.getContent());
+
+        addressService.create(address);
+        Integer addressId = address.getAddressId();
+        return addressId;
     }
 
 

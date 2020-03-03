@@ -24,4 +24,11 @@ public class AddressServiceImpl implements AddressService {
         List<Address> addresses = addressMapper.selectByCustomerId(customerId);
         return addresses;
     }
+
+    @Override
+    public Integer create(Address address) {
+        addressMapper.insertSelective(address);
+        Integer addressId = address.getAddressId();
+        return addressId;
+    }
 }
