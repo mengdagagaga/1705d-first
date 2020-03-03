@@ -65,7 +65,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+<!--        密码加密-->
         <dependency>
             <groupId>at.favre.lib</groupId>
             <artifactId>bcrypt</artifactId>
