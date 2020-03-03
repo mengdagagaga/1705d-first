@@ -35,6 +35,7 @@ public class AdministratorController {
 
     @GetMapping("/login")
     public AdministratorLoginOutDTO login(AdministratorLoginInDTO administratorLoginInDTO) throws ClientException {
+
         Administrator administrator = administratorService.getByUsername(administratorLoginInDTO.getUsername());
         if (administrator == null){
             throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRCODE, ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRMSG);

@@ -122,13 +122,13 @@
   </update>
 
   <!--  custom-->
+
   <select id="selectByUsername" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from jcart_administrator
     where username = #{username}
   </select>
-
 
 
 </mapper>
