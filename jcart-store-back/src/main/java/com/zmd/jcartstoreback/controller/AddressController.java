@@ -3,9 +3,13 @@ package com.zmd.jcartstoreback.controller;
 import com.zmd.jcartstoreback.dto.in.AddressCreateInDTO;
 import com.zmd.jcartstoreback.dto.in.AddressUpdateInDTO;
 import com.zmd.jcartstoreback.dto.out.AddressListOutDTO;
+import com.zmd.jcartstoreback.po.Address;
+import com.zmd.jcartstoreback.service.AddressService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author ZMD
@@ -14,12 +18,28 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/address")
+@CrossOrigin
 public class AddressController {
 
 
-    @GetMapping("/getAddressByCustomerId")
-    public List<AddressListOutDTO> getAddressByCustomerId(@RequestParam Integer customerId){
-        return null;
+    @Autowired
+    private AddressService addressService;
+
+    @GetMapping("/getCustomerAddress")
+    public List<AddressListOutDTO> getCustomerAddress(@RequestAttribute Integer customerId){
+        List<Address> addresses = addressService.getByCustomerId(customerId);
+
+        List<AddressListOutDTO> addressListOutDTOS = addresses.stream().map(address -> {
+            AddressListOutDTO addressListOutDTO = new AddressListOutDTO();
+            addressListOutDTO.setAddressId(address.getAddressId());
+            addressListOutDTO.setTag(address.getTag());
+            addressListOutDTO.setReceiverName(address.getReceiverName());
+            addressListOutDTO.setReceiverMobile(address.getReceiverMobile());
+            addressListOutDTO.setContent(address.getContent());
+            return addressListOutDTO;
+        }).collect(Collectors.toList());
+
+        return addressListOutDTOS;
     }
 
     @PostMapping("/create")
