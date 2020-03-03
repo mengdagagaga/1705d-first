@@ -26,6 +26,7 @@ import java.util.HashMap;
  */
 @RestController
 @RequestMapping("/customer")
+@CrossOrigin
 public class CustomerController {
 
     @Autowired
