@@ -1,14 +1,15 @@
-package com.zmd.jcartadministrationback.dto.in;
+package com.zmd.jcartadministrationback.dto.out;
 
 /**
  * @author ZMD
  * @version 1.0
- * @date 2020/2/24 17:37
+ * @date 2020/3/3 21:07
  */
-public class AdministratorUpdateInDTO {
+public class AdministratorShowOutDTO {
+
     private Integer administratorId;
+    private String username;
     private String realName;
-    private String password;
     private String email;
     private String avatarUrl;
     private Byte status;
@@ -21,20 +22,20 @@ public class AdministratorUpdateInDTO {
         this.administratorId = administratorId;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getRealName() {
         return realName;
     }
 
     public void setRealName(String realName) {
         this.realName = realName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
