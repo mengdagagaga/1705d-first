@@ -65,8 +65,14 @@ public class AdministratorController {
     }
 
     @PostMapping("/updateProfile")
-    public void updateProfile(@RequestBody AdministratorUpdateProfileInDTO administratorUpdateProfileInDTO){
-
+    public void updateProfile(@RequestBody AdministratorUpdateProfileInDTO administratorUpdateProfileInDTO,
+                              @RequestAttribute Integer administratorId){
+        Administrator administrator = new Administrator();
+        administrator.setAdministratorId(administratorId);
+        administrator.setRealName(administratorUpdateProfileInDTO.getRealName());
+        administrator.setEmail(administratorUpdateProfileInDTO.getEmail());
+        administrator.setAvatarUrl(administratorUpdateProfileInDTO.getAvatarUrl());
+        administratorService.update(administrator);
     }
 
     @GetMapping("/getById")
@@ -157,13 +163,13 @@ public class AdministratorController {
 
     @PostMapping("/delete")
     public void delete(@RequestBody Integer administratorId){
-
+        administratorService.delete(administratorId);
     }
 
 
     @PostMapping("/batchDelete")
     public void batchDelete(@RequestBody List<Integer> administratorIds){
-
+        administratorService.batchDelete(administratorIds);
     }
 
 
