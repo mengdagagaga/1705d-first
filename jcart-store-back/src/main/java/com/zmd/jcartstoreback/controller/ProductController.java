@@ -1,8 +1,12 @@
 package com.zmd.jcartstoreback.controller;
 
+import com.github.pagehelper.Page;
+import com.zmd.jcartstoreback.dto.in.ProductSearchInDTO;
 import com.zmd.jcartstoreback.dto.out.PageOutDTO;
 import com.zmd.jcartstoreback.dto.out.ProductListOutDTO;
 import com.zmd.jcartstoreback.dto.out.ProductShowOutDTO;
+import com.zmd.jcartstoreback.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -15,15 +19,25 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class ProductController {
 
+    @Autowired
+    private ProductService productService;
+
     @GetMapping("/search")
-    public PageOutDTO<ProductListOutDTO> search(@RequestParam(required = false, defaultValue = "0") Integer sortType,
+    public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
                                                 @RequestParam(required = false, defaultValue = "1") Integer pageNum){
-        return null;
+        Page<ProductListOutDTO> page = productService.search(pageNum);
+        PageOutDTO<ProductListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setTotal(page.getTotal());
+        pageOutDTO.setPageSize(page.getPageSize());
+        pageOutDTO.setPageNum(page.getPageNum());
+        pageOutDTO.setList(page);
+
+        return pageOutDTO;
     }
 
     @GetMapping("/getById")
     public ProductShowOutDTO getById(@RequestParam Integer productId){
-        return null;
+        ProductShowOutDTO productShowOutDTO = productService.getById(productId);
+        return productShowOutDTO;
     }
-
 }
