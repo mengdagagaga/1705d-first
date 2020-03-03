@@ -1,7 +1,12 @@
 package com.zmd.jcartadministrationback.dao;
 
+import com.github.pagehelper.Page;
 import com.zmd.jcartadministrationback.po.Administrator;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface AdministratorMapper {
     int deleteByPrimaryKey(Integer administratorId);
 
@@ -14,4 +19,12 @@ public interface AdministratorMapper {
     int updateByPrimaryKeySelective(Administrator record);
 
     int updateByPrimaryKey(Administrator record);
+
+
+
+    Administrator selectByUsername(String username);
+
+    void batchDelete(List<Integer> administratorIds);
+
+    Page<Administrator> selectList();
 }
