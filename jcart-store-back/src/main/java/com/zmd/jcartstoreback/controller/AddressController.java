@@ -3,6 +3,7 @@ package com.zmd.jcartstoreback.controller;
 import com.zmd.jcartstoreback.dto.in.AddressCreateInDTO;
 import com.zmd.jcartstoreback.dto.in.AddressUpdateInDTO;
 import com.zmd.jcartstoreback.dto.out.AddressListOutDTO;
+import com.zmd.jcartstoreback.dto.out.AddressShowOutDTO;
 import com.zmd.jcartstoreback.po.Address;
 import com.zmd.jcartstoreback.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +71,18 @@ public class AddressController {
 
     }
 
+    @GetMapping("/getById")
+    public AddressShowOutDTO getById(@RequestParam Integer addressId){
+        Address address = addressService.getById(addressId);
+        AddressShowOutDTO addressShowOutDTO = new AddressShowOutDTO();
+        addressShowOutDTO.setAddressId(address.getAddressId());
+        addressShowOutDTO.setTag(address.getTag());
+        addressShowOutDTO.setReceiverName(address.getReceiverName());
+        addressShowOutDTO.setReceiverMobile(address.getReceiverMobile());
+        addressShowOutDTO.setContent(address.getContent());
 
+        return addressShowOutDTO;
+    }
 
 
 }

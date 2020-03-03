@@ -17,4 +17,6 @@ public interface AddressService {
     Integer create(Address address);
 
     void update(Address address);
+
+    Address getById(Integer addressId);
 }
