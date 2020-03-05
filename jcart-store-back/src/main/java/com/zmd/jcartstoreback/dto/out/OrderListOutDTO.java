@@ -8,9 +8,9 @@ package com.zmd.jcartstoreback.dto.out;
 public class OrderListOutDTO {
 
     private Long orderId;
-    private String orderAbstract;
-    private Integer productCount;
-    private Integer status;
+    //todo add order list total products
+//    private Integer totalProducts;
+    private Byte status;
     private Double totalPrice;
     private Long createTimestamp;
 
@@ -22,27 +22,11 @@ public class OrderListOutDTO {
         this.orderId = orderId;
     }
 
-    public String getOrderAbstract() {
-        return orderAbstract;
-    }
-
-    public void setOrderAbstract(String orderAbstract) {
-        this.orderAbstract = orderAbstract;
-    }
-
-    public Integer getProductCount() {
-        return productCount;
-    }
-
-    public void setProductCount(Integer productCount) {
-        this.productCount = productCount;
-    }
-
-    public Integer getStatus() {
+    public Byte getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Byte status) {
         this.status = status;
     }
 
