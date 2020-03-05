@@ -1,6 +1,7 @@
 package com.zmd.jcartadministrationback.service;
 
 import com.github.pagehelper.Page;
+import com.zmd.jcartadministrationback.dto.in.CustomerSetStatusInDTO;
 import com.zmd.jcartadministrationback.po.Customer;
 
 /**
@@ -13,4 +14,6 @@ public interface CustomerService {
 
 
     Customer getById(Integer customerId);
+
+    void setStatus(CustomerSetStatusInDTO customerSetStatusInDTO);
 }

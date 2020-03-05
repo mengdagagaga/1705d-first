@@ -2,6 +2,7 @@ package com.zmd.jcartadministrationback.controller;
 
 import com.github.pagehelper.Page;
 import com.zmd.jcartadministrationback.dto.in.CustomerSearchInDTO;
+import com.zmd.jcartadministrationback.dto.in.CustomerSetStatusInDTO;
 import com.zmd.jcartadministrationback.dto.out.CustomerListOutDTO;
 import com.zmd.jcartadministrationback.dto.out.CustomerShowOutDTO;
 import com.zmd.jcartadministrationback.dto.out.PageOutDTO;
@@ -83,9 +84,9 @@ public class CustomerController {
         return customerShowOutDTO;
     }
 
-    @PostMapping("/disable")
-    public void disable(@RequestParam Integer customerId){
-
+    @PostMapping("/setStatus")
+    public void setStatus(@RequestBody CustomerSetStatusInDTO customerSetStatusInDTO){
+        customerService.setStatus(customerSetStatusInDTO);
     }
 
 

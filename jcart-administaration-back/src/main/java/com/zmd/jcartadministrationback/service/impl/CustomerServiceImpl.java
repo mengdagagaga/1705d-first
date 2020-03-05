@@ -3,6 +3,7 @@ package com.zmd.jcartadministrationback.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.zmd.jcartadministrationback.dao.CustomerMapper;
+import com.zmd.jcartadministrationback.dto.in.CustomerSetStatusInDTO;
 import com.zmd.jcartadministrationback.po.Customer;
 import com.zmd.jcartadministrationback.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,14 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer getById(Integer customerId) {
         Customer customer = customerMapper.selectByPrimaryKey(customerId);
         return customer;
+    }
+
+    @Override
+    public void setStatus(CustomerSetStatusInDTO customerSetStatusInDTO) {
+        Customer customer = new Customer();
+        customer.setCustomerId(customerSetStatusInDTO.getCustomerId());
+        customer.setStatus(customerSetStatusInDTO.getStatus());
+        customerMapper.updateByPrimaryKeySelective(customer);
     }
 
 }
