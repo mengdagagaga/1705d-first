@@ -11,4 +11,6 @@ import com.zmd.jcartadministrationback.po.Customer;
 public interface CustomerService {
     Page<Customer> search(Integer pageNum);
 
+
+    Customer getById(Integer customerId);
 }
