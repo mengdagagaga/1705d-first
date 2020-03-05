@@ -2,6 +2,7 @@ package com.zmd.jcartstoreback.service;
 
 import com.github.pagehelper.Page;
 import com.zmd.jcartstoreback.dto.in.OrderCheckoutInDTO;
+import com.zmd.jcartstoreback.dto.out.OrderShowOutDTO;
 import com.zmd.jcartstoreback.po.Order;
 
 /**
@@ -15,4 +16,6 @@ public interface OrderService {
     Long checkout(OrderCheckoutInDTO orderCheckoutInDTO, Integer customerId);
 
     Page<Order> getByCustomerId(Integer pageNum, Integer customerId);
+
+    OrderShowOutDTO getById(Long orderId);
 }
