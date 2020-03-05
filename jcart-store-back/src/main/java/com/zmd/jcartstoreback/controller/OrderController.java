@@ -1,12 +1,12 @@
 package com.zmd.jcartstoreback.controller;
 
-import com.zmd.jcartstoreback.dto.in.OrderProductInDTO;
+import com.zmd.jcartstoreback.dto.in.OrderCheckoutInDTO;
 import com.zmd.jcartstoreback.dto.out.OrderListOutDTO;
 import com.zmd.jcartstoreback.dto.out.OrderShowOutDTO;
 import com.zmd.jcartstoreback.dto.out.PageOutDTO;
+import com.zmd.jcartstoreback.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @author ZMD
@@ -15,12 +15,17 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/order")
+@CrossOrigin
 public class OrderController {
 
+    @Autowired
+    private OrderService orderService;
 
     @PostMapping("/checkout")
-    public Integer checkout(List<OrderProductInDTO> orderProducts, Integer customerId){
-        return null;
+    public Long checkout(@RequestBody OrderCheckoutInDTO orderCheckoutInDTO,
+                            @RequestAttribute Integer customerId){
+        Long orderId = orderService.checkout(orderCheckoutInDTO, customerId);
+        return orderId;
     }
 
     @GetMapping("/getMyWithPage")

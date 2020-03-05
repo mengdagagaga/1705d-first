@@ -3,6 +3,7 @@ package com.zmd.jcartstoreback.service;
 import com.github.pagehelper.Page;
 import com.zmd.jcartstoreback.dto.out.ProductListOutDTO;
 import com.zmd.jcartstoreback.dto.out.ProductShowOutDTO;
+import com.zmd.jcartstoreback.po.Product;
 
 /**
  * @author ZMD
@@ -10,7 +11,9 @@ import com.zmd.jcartstoreback.dto.out.ProductShowOutDTO;
  * @date 2020/3/3 13:20
  */
 public interface ProductService {
-    ProductShowOutDTO getById(Integer productId);
+    Product getById(Integer productId);
+
+    ProductShowOutDTO getShowById(Integer productId);
 
     Page<ProductListOutDTO> search(Integer pageNum);
 

@@ -7,22 +7,22 @@ package com.zmd.jcartstoreback.dto.in;
  */
 public class OrderProductInDTO {
 
-    private Integer orderProductId;
-    private Integer orderProductQuantity;
+    private Integer productId;
+    private Integer quantity;
 
-    public Integer getOrderProductId() {
-        return orderProductId;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setOrderProductId(Integer orderProductId) {
-        this.orderProductId = orderProductId;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
-    public Integer getOrderProductQuantity() {
-        return orderProductQuantity;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setOrderProductQuantity(Integer orderProductQuantity) {
-        this.orderProductQuantity = orderProductQuantity;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }
