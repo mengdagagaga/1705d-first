@@ -81,6 +81,7 @@ public class ReturnController {
 
     @GetMapping("/getById")
     public ReturnShowOutDTO getById(@RequestParam Integer returnId) {
+        Return aReturn = returnService.getById(returnId);
         return null;
     }
 

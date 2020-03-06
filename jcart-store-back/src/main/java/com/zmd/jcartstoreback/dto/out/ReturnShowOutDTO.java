@@ -1,7 +1,5 @@
 package com.zmd.jcartstoreback.dto.out;
 
-import java.util.List;
-
 /**
  * @author ZMD
  * @version 1.0
@@ -11,15 +9,20 @@ public class ReturnShowOutDTO {
 
     private Integer returnId;
     private Long orderId;
-    private Long createTimestamp;
     private Long orderTimestamp;
+    private String customerName;
+    private String mobile;
+    private String email;
+    private Byte status;
+    private Byte action;
     private String productCode;
     private String productName;
     private Integer quantity;
     private Byte reason;
     private Boolean opened;
-    private Byte action;
-    private List<ReturnHistoryOutDTO> returnHistories;
+    private String comment;
+    private Long createTimestamp;
+    private Long updateTimestamp;
 
     public Integer getReturnId() {
         return returnId;
@@ -37,20 +40,52 @@ public class ReturnShowOutDTO {
         this.orderId = orderId;
     }
 
-    public Long getCreateTimestamp() {
-        return createTimestamp;
-    }
-
-    public void setCreateTimestamp(Long createTimestamp) {
-        this.createTimestamp = createTimestamp;
-    }
-
     public Long getOrderTimestamp() {
         return orderTimestamp;
     }
 
     public void setOrderTimestamp(Long orderTimestamp) {
         this.orderTimestamp = orderTimestamp;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
+    }
+
+    public Byte getAction() {
+        return action;
+    }
+
+    public void setAction(Byte action) {
+        this.action = action;
     }
 
     public String getProductCode() {
@@ -93,19 +128,27 @@ public class ReturnShowOutDTO {
         this.opened = opened;
     }
 
-    public Byte getAction() {
-        return action;
+    public String getComment() {
+        return comment;
     }
 
-    public void setAction(Byte action) {
-        this.action = action;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    public List<ReturnHistoryOutDTO> getReturnHistories() {
-        return returnHistories;
+    public Long getCreateTimestamp() {
+        return createTimestamp;
     }
 
-    public void setReturnHistories(List<ReturnHistoryOutDTO> returnHistories) {
-        this.returnHistories = returnHistories;
+    public void setCreateTimestamp(Long createTimestamp) {
+        this.createTimestamp = createTimestamp;
+    }
+
+    public Long getUpdateTimestamp() {
+        return updateTimestamp;
+    }
+
+    public void setUpdateTimestamp(Long updateTimestamp) {
+        this.updateTimestamp = updateTimestamp;
     }
 }
