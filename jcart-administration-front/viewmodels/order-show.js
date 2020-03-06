@@ -17,8 +17,7 @@ var app = new Vue({
         invoicePrice: '',
         comment: '',
         orderProducts: [],
-        
-
+        orderHistories: [],
     },
     mounted() {
         console.log('view mounted');
@@ -31,6 +30,7 @@ var app = new Vue({
         }
 
         this.getOrderById();
+        this.getHistoryByOrderId();
     },
     methods: {
        
@@ -63,7 +63,19 @@ var app = new Vue({
                     console.log(error);
                 });
         },
-       
-        
+        getHistoryByOrderId() {
+            axios.get('/orderhistory/getListByOrderId', {
+                params: {
+                    orderId: this.orderId
+                }
+            })
+                .then(function (response) {
+                    console.log(response);
+                    app.orderHistories = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
     }
 })
