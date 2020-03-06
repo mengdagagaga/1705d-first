@@ -1,5 +1,9 @@
 package com.zmd.jcartadministrationback.dto.out;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Date;
+
 /**
  * @author ZMD
  * @version 1.0
@@ -7,19 +11,23 @@ package com.zmd.jcartadministrationback.dto.out;
  */
 public class OrderListOutDTO {
 
-    private Integer orderId;
+    private Long orderId;
     private Integer customerId;
     private String customerName;
     private Byte status;
     private Double totalPrice;
-    private Long createTimeStamp;
+    @JsonIgnore
+    private Date createTime;
+    private Long createTimestamp;
+    @JsonIgnore
+    private Date updateTime;
     private Long updateTimestamp;
 
-    public Integer getOrderId() {
+    public Long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
 
@@ -55,12 +63,28 @@ public class OrderListOutDTO {
         this.totalPrice = totalPrice;
     }
 
-    public Long getCreateTimeStamp() {
-        return createTimeStamp;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateTimeStamp(Long createTimeStamp) {
-        this.createTimeStamp = createTimeStamp;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Long getCreateTimestamp() {
+        return createTimestamp;
+    }
+
+    public void setCreateTimestamp(Long createTimestamp) {
+        this.createTimestamp = createTimestamp;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public Long getUpdateTimestamp() {
