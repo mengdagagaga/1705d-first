@@ -9,6 +9,7 @@ public class ReturnApplyInDTO {
 
 
     private Long orderId;
+    private Long orderTimestamp;
     private String customerName;
     private String mobile;
     private String email;
@@ -98,5 +99,13 @@ public class ReturnApplyInDTO {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Long getOrderTimestamp() {
+        return orderTimestamp;
+    }
+
+    public void setOrderTimestamp(Long orderTimestamp) {
+        this.orderTimestamp = orderTimestamp;
     }
 }
