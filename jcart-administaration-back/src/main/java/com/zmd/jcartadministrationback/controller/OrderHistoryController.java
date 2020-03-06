@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author ZMD
@@ -25,9 +26,17 @@ public class OrderHistoryController {
     @GetMapping("/getListByOrderId")
     public List<OrderHistoryListOutDTO> getListByOrderId(@RequestParam Long orderId){
         List<OrderHistory> orderHistories = orderHistoryService.getByOrderId(orderId);
+        List<OrderHistoryListOutDTO> orderHistoryListOutDTOS = orderHistories.stream().map(orderHistory -> {
+            OrderHistoryListOutDTO orderHistoryListOutDTO = new OrderHistoryListOutDTO();
+            orderHistoryListOutDTO.setOrderHistoryId(orderHistory.getOrderHistoryId());
+            orderHistoryListOutDTO.setTimestamp(orderHistory.getTime().getTime());
+            orderHistoryListOutDTO.setOrderStatus(orderHistory.getOrderStatus());
+            orderHistoryListOutDTO.setComment(orderHistory.getComment());
+            orderHistoryListOutDTO.setCustomerNotified(orderHistory.getCustomerNotified());
+            return orderHistoryListOutDTO;
+        }).collect(Collectors.toList());
 
-
-        return null;
+        return orderHistoryListOutDTOS;
     }
 
 
