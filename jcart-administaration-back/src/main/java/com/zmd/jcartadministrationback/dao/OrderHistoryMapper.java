@@ -21,6 +21,7 @@ public interface OrderHistoryMapper {
     int updateByPrimaryKey(OrderHistory record);
 
 
-    //my
-    List<OrderHistory> selectByOrderId(@Param("orderId")Long orderId);
+    //    custom
+
+    List<OrderHistory> selectByOrderId(@Param("orderId") Long orderId);
 }
