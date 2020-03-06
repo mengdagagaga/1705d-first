@@ -1,5 +1,7 @@
 package com.zmd.jcartadministrationback.dto.out;
 
+import com.zmd.jcartadministrationback.vo.OrderProductVO;
+
 import java.util.List;
 
 /**
@@ -10,10 +12,11 @@ import java.util.List;
 public class OrderShowOutDTO {
     private Long orderId;
     private Integer customerId;
+    private String customerName;
     private Byte status;
     private Double totalPrice;
     private Integer rewordPoints;
-    private Long createdTimestamp;
+    private Long createTimestamp;
     private Long updateTimestamp;
     private Short shipMethod;
     private String shipAddress;
@@ -22,7 +25,8 @@ public class OrderShowOutDTO {
     private String invoiceAddress;
     private Double invoicePrice;
     private String comment;
-    private List<OrderProductShowOutDTO> orderProducts;
+    private List<OrderProductVO> orderProducts;
+
 
     public Long getOrderId() {
         return orderId;
@@ -38,6 +42,14 @@ public class OrderShowOutDTO {
 
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public Byte getStatus() {
@@ -64,12 +76,12 @@ public class OrderShowOutDTO {
         this.rewordPoints = rewordPoints;
     }
 
-    public Long getCreatedTimestamp() {
-        return createdTimestamp;
+    public Long getCreateTimestamp() {
+        return createTimestamp;
     }
 
-    public void setCreatedTimestamp(Long createdTimestamp) {
-        this.createdTimestamp = createdTimestamp;
+    public void setCreateTimestamp(Long createTimestamp) {
+        this.createTimestamp = createTimestamp;
     }
 
     public Long getUpdateTimestamp() {
@@ -136,11 +148,11 @@ public class OrderShowOutDTO {
         this.comment = comment;
     }
 
-    public List<OrderProductShowOutDTO> getOrderProducts() {
+    public List<OrderProductVO> getOrderProducts() {
         return orderProducts;
     }
 
-    public void setOrderProducts(List<OrderProductShowOutDTO> orderProducts) {
+    public void setOrderProducts(List<OrderProductVO> orderProducts) {
         this.orderProducts = orderProducts;
     }
 }
