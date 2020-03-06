@@ -1,5 +1,6 @@
 package com.zmd.jcartstoreback.controller;
 
+import com.github.pagehelper.Page;
 import com.zmd.jcartstoreback.dto.in.ReturnApplyInDTO;
 import com.zmd.jcartstoreback.dto.out.PageOutDTO;
 import com.zmd.jcartstoreback.dto.out.ReturnListOutDTO;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author ZMD
@@ -51,10 +54,29 @@ public class ReturnController {
         return returnId;
     }
 
-    @GetMapping("/getReturnByCustomerId")
-    public PageOutDTO<ReturnListOutDTO> getReturnByCustomerId(@RequestParam Integer pageNum,
-                                                              @RequestParam Integer customerId) {
-        return null;
+    @GetMapping("/getList")
+    public PageOutDTO<ReturnListOutDTO> getList(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
+                                                @RequestAttribute Integer customerId) {
+        Page<Return> page = returnService.getPageByCustomerId(customerId, pageNum);
+
+        List<ReturnListOutDTO> returnListOutDTOS = page.stream().map(aReturn -> {
+            ReturnListOutDTO returnListOutDTO = new ReturnListOutDTO();
+            returnListOutDTO.setReturnId(aReturn.getReturnId());
+            returnListOutDTO.setOrderId(aReturn.getOrderId());
+            returnListOutDTO.setCustomerId(aReturn.getCustomerId());
+            returnListOutDTO.setCustomerName(aReturn.getCustomerName());
+            returnListOutDTO.setStatus(aReturn.getStatus());
+            returnListOutDTO.setCreateTimestamp(aReturn.getCreateTime().getTime());
+            return returnListOutDTO;
+        }).collect(Collectors.toList());
+
+        PageOutDTO<ReturnListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setTotal(page.getTotal());
+        pageOutDTO.setPageSize(page.getPageSize());
+        pageOutDTO.setPageNum(page.getPageNum());
+        pageOutDTO.setList(returnListOutDTOS);
+
+        return pageOutDTO;
     }
 
     @GetMapping("/getById")

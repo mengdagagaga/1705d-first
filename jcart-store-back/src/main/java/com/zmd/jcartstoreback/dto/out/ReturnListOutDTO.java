@@ -12,6 +12,7 @@ public class ReturnListOutDTO {
     private Byte status;
     private Long createTimestamp;
     private String customerName;
+    private Integer customerId;
 
     public Integer getReturnId() {
         return returnId;
@@ -51,5 +52,13 @@ public class ReturnListOutDTO {
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
+    }
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 }

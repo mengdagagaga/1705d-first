@@ -1,6 +1,8 @@
 package com.zmd.jcartstoreback.dao;
 
+import com.github.pagehelper.Page;
 import com.zmd.jcartstoreback.po.Return;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,4 +18,8 @@ public interface ReturnMapper {
     int updateByPrimaryKeySelective(Return record);
 
     int updateByPrimaryKey(Return record);
+
+
+    //my
+    Page<Return> selectPageByCustomerId(@Param("customerId")Integer customerId);
 }
