@@ -2,11 +2,11 @@ package com.zmd.jcartstoreback.controller;
 
 import com.github.pagehelper.Page;
 import com.zmd.jcartstoreback.dto.in.ReturnApplyInDTO;
-import com.zmd.jcartstoreback.dto.out.PageOutDTO;
-import com.zmd.jcartstoreback.dto.out.ReturnListOutDTO;
-import com.zmd.jcartstoreback.dto.out.ReturnShowOutDTO;
+import com.zmd.jcartstoreback.dto.out.*;
 import com.zmd.jcartstoreback.enumeration.ReturnStatus;
 import com.zmd.jcartstoreback.po.Return;
+import com.zmd.jcartstoreback.po.ReturnHistory;
+import com.zmd.jcartstoreback.service.ReturnHistoryService;
 import com.zmd.jcartstoreback.service.ReturnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +27,9 @@ public class ReturnController {
 
     @Autowired
     private ReturnService returnService;
+
+    @Autowired
+    private ReturnHistoryService returnHistoryService;
 
     //退货申请
     @PostMapping("/apply")
@@ -99,12 +102,17 @@ public class ReturnController {
         returnShowOutDTO.setOpened(aReturn.getOpened());
         returnShowOutDTO.setCreateTimestamp(aReturn.getCreateTime().getTime());
         returnShowOutDTO.setUpdateTimestamp(aReturn.getUpdateTime().getTime());
+        List<ReturnHistory> returnHistories = returnHistoryService.getByReturnId(returnId);
+        List<ReturnHistoryListOutDTO> returnHistoryListOutDTOS = returnHistories.stream().map(returnHistory -> {
+            ReturnHistoryListOutDTO returnHistoryListOutDTO = new ReturnHistoryListOutDTO();
+            returnHistoryListOutDTO.setTimestamp(returnHistory.getTime().getTime());
+            returnHistoryListOutDTO.setReturnStatus(returnHistory.getReturnStatus());
+            returnHistoryListOutDTO.setComment(returnHistory.getComment());
+            return returnHistoryListOutDTO;
+        }).collect(Collectors.toList());
+        returnShowOutDTO.setReturnHistories(returnHistoryListOutDTOS);
 
-        
-
-
-
-        return null;
+        return returnShowOutDTO;
     }
 
 

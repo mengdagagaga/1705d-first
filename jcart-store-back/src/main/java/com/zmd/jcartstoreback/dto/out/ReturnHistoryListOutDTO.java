@@ -5,11 +5,11 @@ package com.zmd.jcartstoreback.dto.out;
  * @version 1.0
  * @date 2020/2/25 16:57
  */
-public class ReturnHistoryOutDTO {
+public class ReturnHistoryListOutDTO {
 
 
     private Long timestamp;
-    private Byte orderStatus;
+    private Byte returnStatus;
     private String comment;
 
     public Long getTimestamp() {
@@ -20,13 +20,6 @@ public class ReturnHistoryOutDTO {
         this.timestamp = timestamp;
     }
 
-    public Byte getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(Byte orderStatus) {
-        this.orderStatus = orderStatus;
-    }
 
     public String getComment() {
         return comment;
@@ -34,5 +27,13 @@ public class ReturnHistoryOutDTO {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Byte getReturnStatus() {
+        return returnStatus;
+    }
+
+    public void setReturnStatus(Byte returnStatus) {
+        this.returnStatus = returnStatus;
     }
 }

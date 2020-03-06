@@ -1,5 +1,7 @@
 package com.zmd.jcartstoreback.dto.out;
 
+import java.util.List;
+
 /**
  * @author ZMD
  * @version 1.0
@@ -23,6 +25,8 @@ public class ReturnShowOutDTO {
     private String comment;
     private Long createTimestamp;
     private Long updateTimestamp;
+
+    private List<ReturnHistoryListOutDTO> returnHistories;
 
     public Integer getReturnId() {
         return returnId;
@@ -150,5 +154,13 @@ public class ReturnShowOutDTO {
 
     public void setUpdateTimestamp(Long updateTimestamp) {
         this.updateTimestamp = updateTimestamp;
+    }
+
+    public List<ReturnHistoryListOutDTO> getReturnHistories() {
+        return returnHistories;
+    }
+
+    public void setReturnHistories(List<ReturnHistoryListOutDTO> returnHistories) {
+        this.returnHistories = returnHistories;
     }
 }
