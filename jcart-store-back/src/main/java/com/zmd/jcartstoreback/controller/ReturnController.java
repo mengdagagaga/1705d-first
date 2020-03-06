@@ -19,6 +19,7 @@ import java.util.Date;
  */
 @RestController
 @RequestMapping("/return")
+@CrossOrigin
 public class ReturnController {
 
     @Autowired
