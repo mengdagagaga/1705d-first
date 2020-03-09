@@ -2,9 +2,13 @@ package com.zmd.jcartadministrationback.controller;
 
 import com.zmd.jcartadministrationback.dto.in.ReturnHistoryCreateInDTO;
 import com.zmd.jcartadministrationback.dto.out.ReturnHistoryListOutDTO;
+import com.zmd.jcartadministrationback.po.ReturnHistory;
+import com.zmd.jcartadministrationback.service.ReturnHistoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author ZMD
@@ -13,12 +17,28 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/returnhistory")
+@CrossOrigin
 public class ReturnHistoryController {
+
+    @Autowired
+    private ReturnHistoryService returnHistoryService;
 
 
     @GetMapping("/getListByReturnId")
     public List<ReturnHistoryListOutDTO> getListByReturnId(@RequestParam Integer returnId){
-        return null;
+        List<ReturnHistory> returnHistories = returnHistoryService.getListByReturnId(returnId);
+
+        List<ReturnHistoryListOutDTO> returnHistoryListOutDTOS = returnHistories.stream().map(returnHistory -> {
+            ReturnHistoryListOutDTO returnHistoryListOutDTO = new ReturnHistoryListOutDTO();
+            returnHistoryListOutDTO.setReturnHistoryId(returnHistory.getReturnHistoryId());
+            returnHistoryListOutDTO.setTimestamp(returnHistory.getTime().getTime());
+            returnHistoryListOutDTO.setReturnStatus(returnHistory.getReturnStatus());
+            returnHistoryListOutDTO.setComment(returnHistory.getComment());
+            returnHistoryListOutDTO.setCustomerNotified(returnHistory.getCustomerNotified());
+            return returnHistoryListOutDTO;
+        }).collect(Collectors.toList());
+
+        return returnHistoryListOutDTOS;
     }
 
 

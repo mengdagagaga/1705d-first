@@ -7,17 +7,17 @@ package com.zmd.jcartadministrationback.dto.out;
  */
 public class ReturnHistoryListOutDTO {
 
-    private Integer returnHistoryId;
+    private Long returnHistoryId;
     private Long timestamp;
     private Byte returnStatus;
     private String comment;
-    private Byte customerNotified;
+    private Boolean customerNotified;
 
-    public Integer getReturnHistoryId() {
+    public Long getReturnHistoryId() {
         return returnHistoryId;
     }
 
-    public void setReturnHistoryId(Integer returnHistoryId) {
+    public void setReturnHistoryId(Long returnHistoryId) {
         this.returnHistoryId = returnHistoryId;
     }
 
@@ -45,11 +45,11 @@ public class ReturnHistoryListOutDTO {
         this.comment = comment;
     }
 
-    public Byte getCustomerNotified() {
+    public Boolean getCustomerNotified() {
         return customerNotified;
     }
 
-    public void setCustomerNotified(Byte customerNotified) {
+    public void setCustomerNotified(Boolean customerNotified) {
         this.customerNotified = customerNotified;
     }
 }
