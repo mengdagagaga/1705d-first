@@ -9,9 +9,11 @@ public class ReturnSearchInDTO {
     private Integer returnId;
     private Long orderId;
     private String customerName;
-    private String productName;
     private String productCode;
+    private String productName;
     private Byte status;
+    private Long startTimestamp;
+    private Long endTimestamp;
 
     public Integer getReturnId() {
         return returnId;
@@ -37,14 +39,6 @@ public class ReturnSearchInDTO {
         this.customerName = customerName;
     }
 
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
     public String getProductCode() {
         return productCode;
     }
@@ -53,11 +47,35 @@ public class ReturnSearchInDTO {
         this.productCode = productCode;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
     public Byte getStatus() {
         return status;
     }
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public Long getStartTimestamp() {
+        return startTimestamp;
+    }
+
+    public void setStartTimestamp(Long startTimestamp) {
+        this.startTimestamp = startTimestamp;
+    }
+
+    public Long getEndTimestamp() {
+        return endTimestamp;
+    }
+
+    public void setEndTimestamp(Long endTimestamp) {
+        this.endTimestamp = endTimestamp;
     }
 }
