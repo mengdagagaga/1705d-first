@@ -12,4 +12,6 @@ import com.zmd.jcartadministrationback.po.Return;
 public interface ReturnService {
 
     Page<Return> search(ReturnSearchInDTO returnSearchInDTO, Integer pageNum);
+
+    Return getById(Integer returnId);
 }
