@@ -2,6 +2,7 @@ package com.zmd.jcartadministrationback.dao;
 
 import com.github.pagehelper.Page;
 import com.zmd.jcartadministrationback.po.Administrator;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface AdministratorMapper {
     void batchDelete(List<Integer> administratorIds);
 
     Page<Administrator> selectList();
+
+    Administrator selectByEmail(@Param("email") String email);
 }
