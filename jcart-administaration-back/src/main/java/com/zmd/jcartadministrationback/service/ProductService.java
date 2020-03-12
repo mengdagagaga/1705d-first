@@ -2,6 +2,7 @@ package com.zmd.jcartadministrationback.service;
 
 import com.github.pagehelper.Page;
 import com.zmd.jcartadministrationback.dto.in.ProductCreateInDTO;
+import com.zmd.jcartadministrationback.dto.in.ProductSearchInDTO;
 import com.zmd.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import com.zmd.jcartadministrationback.dto.out.ProductListOutDTO;
 import com.zmd.jcartadministrationback.dto.out.ProductShowOutDTO;
@@ -19,7 +20,7 @@ public interface ProductService {
 
     void delete(Integer productId);
 
-    Page<ProductListOutDTO> search(Integer pageNum);
+    Page<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,Integer pageNum);
 
     ProductShowOutDTO getById(Integer productId);
 }
