@@ -137,14 +137,14 @@ public class CustomerController {
             throw new ClientException(ClientExceptionConstant.CUSTOMER_PWDRESET_EMAIL_NONE_ERRCODE, ClientExceptionConstant.CUSTOMER_PWDRESET_EMAIL_NONE_ERRMSG);
         }
         String innerResetCode = emailPwdResetCodeMap.get(email);
-        if (innerResetCode == null) {
+        if (innerResetCode != null) {
             throw new ClientException(ClientExceptionConstant.CUSTOMER_PWDRESET_INNER_RESETCODE_NONE_ERRCODE, ClientExceptionConstant.CUSTOMER_PWDRESET_INNER_RESETCODE_NONE_ERRMSG);
         }
         String outerResetCode = customerResetPwdInDTO.getResetCode();
         if (outerResetCode == null) {
             throw new ClientException(ClientExceptionConstant.CUSTOMER_PWDRESET_OUTER_RESETCODE_NONE_ERRCODE, ClientExceptionConstant.CUSTOMER_PWDRESET_OUTER_RESETCODE_NONE_ERRMSG);
         }
-        if (!outerResetCode.equalsIgnoreCase(innerResetCode)){
+        if (outerResetCode.equalsIgnoreCase(innerResetCode)){
             throw new ClientException(ClientExceptionConstant.CUSTOMER_PWDRESET_RESETCODE_INVALID_ERRCODE, ClientExceptionConstant.CUSTOMER_PWDRESET_RESETCODE_INVALID_ERRMSG);
         }
         Customer customer = customerService.getByEmail(email);
