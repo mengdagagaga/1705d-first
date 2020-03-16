@@ -1,6 +1,7 @@
 package com.zmd.jcartadministrationback.service;
 
 import com.github.pagehelper.Page;
+import com.zmd.jcartadministrationback.dto.in.CustomerSearchInDTO;
 import com.zmd.jcartadministrationback.dto.in.CustomerSetStatusInDTO;
 import com.zmd.jcartadministrationback.po.Customer;
 
@@ -10,7 +11,7 @@ import com.zmd.jcartadministrationback.po.Customer;
  * @date 2020/3/5 19:55
  */
 public interface CustomerService {
-    Page<Customer> search(Integer pageNum);
+    Page<Customer> search(CustomerSearchInDTO customerSearchInDTO, Integer pageNum);
 
 
     Customer getById(Integer customerId);
