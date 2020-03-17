@@ -52,6 +52,12 @@ var app = new Vue({
         searchOrder() {
             axios.get('/order/search', {
                 params: {
+                    orderId: this.orderId,
+                    customerName: this.customerName,
+                    status: this.selectedStatus,
+                    totalPrice: this.totalPrice,
+                    startTimestamp: this.startTime ? this.startTime.getTime() : '',
+                    endTimestamp: this.endTime ? this.endTime.getTime() : '',
                     pageNum: this.pageNum
                 }
             })

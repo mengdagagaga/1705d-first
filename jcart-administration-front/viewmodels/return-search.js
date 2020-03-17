@@ -48,6 +48,14 @@ var app = new Vue({
         searchReturn() {
             axios.get('/return/search', {
                 params: {
+                    returnId: this.returnId,
+                    orderId: this.orderId,
+                    customerName: this.customerName,
+                    productCode: this.productCode,
+                    productName: this.productName,
+                    status: this.selectedStatus,
+                    startTimestamp: this.startTime ? this.startTime.getTime() : '',
+                    endTimestamp: this.endTime ? this.endTime.getTime() : '',
                     pageNum: this.pageNum
                 }
             })
